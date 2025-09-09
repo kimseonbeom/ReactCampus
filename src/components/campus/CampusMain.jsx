@@ -9,7 +9,16 @@ import HomeWrapperPro from './HomeWrapperPro'
 import MailWrite from './MailWrite'
 import MailNavBar from './MailNavBar'
 import MailDashBoard from './MailDashBoard'
-import ProjectObjectProjectList from '../ProjectObjectProjectList'
+import ProjectObjectProjectList from './ProjectObjectProjectList'
+import LecturePlanNoneData from './LecturePlanNoneData'
+import LecturePlanNoneDataPro from './LecturePlanNoneDataPro'
+import Error from './Error'
+import ProjectTeamList from './ProjectTeamList'
+import ProjectTeamListPro from './ProjectTeamListPro'
+import Mypage from './Mypage'
+import MypagePro from './MypagePro'
+import LecturePlanDetail from './LecturePlanDetail'
+import LecturePlanDetailPro from './LecturePlanDetailPro'
 const Container = styled.div`
     width: 100vw;
 `
@@ -55,7 +64,15 @@ function CampusMain() {
           </MailMenu>
           <MailDashBoard></MailDashBoard> */}
           <TopNav></TopNav>
-          <ProjectObjectProjectList></ProjectObjectProjectList>
+          <HomeWrapper></HomeWrapper>
+          {/* <ProjectObjectProjectList></ProjectObjectProjectList> */}
+          {/* <LecturePlanNoneData></LecturePlanNoneData> */}
+          {/* <LecturePlanNoneDataPro></LecturePlanNoneDataPro> */}
+          {/* <Error></Error> */}
+          {/* <ProjectTeamList></ProjectTeamList> */}
+          {/* <Mypage></Mypage> */}
+          {/* <LecturePlanDetail></LecturePlanDetail> */}
+          {/* <LecturePlanDetailPro></LecturePlanDetailPro> */}
         </Container>
 
     </BrowserRouter>

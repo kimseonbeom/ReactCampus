@@ -4,7 +4,7 @@ import Cancle from './img/Cancle.png'
 import styled from 'styled-components'
 import { GrayHr } from './HomeWrapperPro'
 
-const RegistButton = styled.button`
+export const RegistButton = styled.button`
     width: 69px;
     height: 29px;
     background-color: #2ec4b6;

@@ -19,7 +19,7 @@ import styled from 'styled-components'
 export const Flex = styled.div`
     display: flex;
 `
-const RedBox = styled.div`
+export const RedBox = styled.div`
     border: 2px solid #ef7c7c;
     border-radius: 3px;
     width: 49px;
@@ -27,7 +27,7 @@ const RedBox = styled.div`
     text-align: center;
     line-height: 13px;
 ` 
-const RedBoxFont = styled.span`
+export const RedBoxFont = styled.span`
     font-size: 12px;
     color: #ef7c7c;
     font-weight: 700;

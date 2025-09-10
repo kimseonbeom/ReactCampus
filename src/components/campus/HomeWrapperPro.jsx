@@ -33,12 +33,12 @@ export const RedBoxFont = styled.span`
     font-weight: 700;
     `
 export const GrayHr = styled.hr`
-    background-color: #aaa;
+    background-color: #ccc;
 `
 function HomeWrapperPro() {
   return (
     <Container>
-            <ContentBox>
+            <ContentBox style={{marginTop:'10px'}}>
                 <Header>
                     <HeadText>예정 강의</HeadText>
                 </Header>

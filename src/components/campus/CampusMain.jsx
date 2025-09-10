@@ -19,6 +19,12 @@ import Mypage from './Mypage'
 import MypagePro from './MypagePro'
 import LecturePlanDetail from './LecturePlanDetail'
 import LecturePlanDetailPro from './LecturePlanDetailPro'
+import ConfirmModal from './ConfirmModal'
+import AlertModal from './AlertModal'
+import LectureOnlineRegist from './LectureOnlineRegist'
+import LectureOnlineModify from './LectureOnlineModify'
+import ChangePasswordModal from './ChangePasswordModal'
+import AttandanceModal from './AttandanceModal'
 const Container = styled.div`
     width: 100vw;
 `
@@ -62,17 +68,25 @@ function CampusMain() {
           <MailWrite></MailWrite>
           <MailNavBar></MailNavBar>
           </MailMenu>
-          <MailDashBoard></MailDashBoard> */}
-          <TopNav></TopNav>
-          <HomeWrapper></HomeWrapper>
+          <MailDashBoard></MailDashBoard>  */}
+          {/* <TopNav></TopNav> */}
+          {/* <HomeWrapper></HomeWrapper> */}
+          {/* <HomeWrapperPro></HomeWrapperPro> */}
           {/* <ProjectObjectProjectList></ProjectObjectProjectList> */}
           {/* <LecturePlanNoneData></LecturePlanNoneData> */}
           {/* <LecturePlanNoneDataPro></LecturePlanNoneDataPro> */}
           {/* <Error></Error> */}
           {/* <ProjectTeamList></ProjectTeamList> */}
           {/* <Mypage></Mypage> */}
+          {/* <MypagePro></MypagePro> */}
           {/* <LecturePlanDetail></LecturePlanDetail> */}
           {/* <LecturePlanDetailPro></LecturePlanDetailPro> */}
+          {/* <LectureOnlineRegist></LectureOnlineRegist> */}
+          <LectureOnlineModify></LectureOnlineModify>
+          <ConfirmModal />
+          <AlertModal />
+          <ChangePasswordModal />
+          <AttandanceModal />
         </Container>
 
     </BrowserRouter>

@@ -7,7 +7,7 @@ import mail from './img/mail.png';
 export const Container = styled.div`
   width: 100%;
   height: 70px;
-  background-color: #f7f7f7;
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: center;

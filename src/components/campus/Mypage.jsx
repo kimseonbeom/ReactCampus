@@ -7,8 +7,9 @@ import styled from 'styled-components'
 import { ContentBox, Header, HeadText } from './HomeWrapper'
 import pictureMdfBtn from './img/PictureModifyBtn.png'
 import user1 from './img/user1.jpg'
-import { ContentText, GreenBox } from './ProjectObjectProjectList'
+import { GreenBox } from './ProjectObjectProjectList'
 import { Hr } from './SideMenu'
+import { usePasswordModalStore } from './modalStore'
 
 export const PictureContainer = styled.div`
     width: 100%;
@@ -67,18 +68,32 @@ export const TableOverView = styled.td`
     width: 295px;
     border-bottom: 1px solid #aaa;
     max-width: 295px;
+    line-height: 2;
 `
 export const TableText = styled.h3`
     font-size: 14px;
     font-weight: 500;
     margin: 8px 12px 8px 18px;
+    line-height: 1.8;
 `
 export const Wrap = styled.div`
     width: 100%;
     height: 100%;
     background-color: #f7f7f7;
 `
+const MyTitleText = styled.h3`
+    font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+`
 function Mypage() {
+    const { showModal } = usePasswordModalStore();
+
+    const openModal = () => {
+    showModal("비밀번호를 변경", (form) => {
+      console.log("확인 클릭됨:", form);
+    });
+  };
   return (
     <>
    <Container style={{backgroundColor:'#fff',display:'flex', justifyContent:'space-between', alignItems:'center'}}>
@@ -98,17 +113,17 @@ function Mypage() {
                     <img src={pictureMdfBtn} style={{width:'100%', height:'100%', objectFit:'cover'}}/>
                 </PictureModifyBtn>
             </Picture>
-            <HeadText style={{marginTop:'12px'}}>20191396</HeadText>
-            <HeadText>권오규</HeadText>
+            <HeadText style={{marginTop:'12px', marginBottom:'2px'}}>20191396</HeadText>
+            <HeadText style={{marginTop:0}}>권오규</HeadText>
             </div>
         </PictureContainer>
         <Wrap>
-        <ContentBox style={{height:'233px', marginBottom:'10px'}}>
+        <ContentBox style={{height:'270px', marginBottom:'10px'}}>
             <Header style={{paddingTop:'18px', alignItems:'center',paddingLeft:'26px'}}>
-            <ContentText>
+            <MyTitleText>
                 개인정보
-            </ContentText>
-            <GreenBox style={{width:'97px', height:'26px', lineHeight:'23px', marginLeft:'auto'}}>
+            </MyTitleText>
+            <GreenBox style={{width:'97px', height:'26px', lineHeight:'23px', marginLeft:'auto'}} onClick={openModal}>
                 비밀번호 변경
             </GreenBox>
             </Header>
@@ -166,9 +181,9 @@ function Mypage() {
         </ContentBox>
         <ContentBox style={{height:'450px', marginBottom:'10px'}}>
             <Header style={{paddingTop:'20px',paddingBottom:'10px', alignItems:'center',paddingLeft:'26px'}}>
-            <ContentText>
+            <MyTitleText>
                 학사정보
-            </ContentText>
+            </MyTitleText>
             </Header>
             <Hr style={{width:'372px', margin:'0 auto'}}/>
         <Table>

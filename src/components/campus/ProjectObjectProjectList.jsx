@@ -36,12 +36,12 @@ const GrayBox = styled.div`
   text-align: center;
 `
 export const ContentText = styled.h3`
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   margin: 0;
 `
 export const OverviewText = styled.h3`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: #aaa;
   margin: 0;
@@ -114,7 +114,7 @@ function ProjectObjectProjectList() {
                     <CheckText>미완료 (1)</CheckText>
                 </label>
             </CheckContainer>
-            <ContentBox style={{width:'386px', height:'133px', margin:'0 auto', border:'1px solid #aaa', marginBottom:'10px'}}>
+            <ContentBox style={{width:'386px', height:'140px', margin:'0 auto', border:'1px solid #ccc', marginBottom:'10px'}}>
                         <Header style={{paddingTop:'4px', paddingBottom:'11px', height:'37px'}}>
                           <HeadText style={{fontSize:'14px'}}>
                             Camp_us
@@ -155,7 +155,7 @@ function ProjectObjectProjectList() {
                           </div>
                         </FlexDiv>
             </ContentBox>
-            <ContentBox style={{width:'386px', height:'133px', margin:'0 auto', border:'1px solid #aaa',marginBottom:'10px'}}>
+            <ContentBox style={{width:'386px', height:'140px', margin:'0 auto', border:'1px solid #ccc',marginBottom:'10px'}}>
                         <Header style={{paddingTop:'4px', paddingBottom:'11px', height:'37px'}}>
                           <HeadText style={{fontSize:'14px'}}>
                             Camp_us
@@ -196,7 +196,7 @@ function ProjectObjectProjectList() {
                           </div>
                         </FlexDiv>
             </ContentBox>
-            <ContentBox style={{width:'386px', height:'133px', margin:'0 auto', border:'1px solid #aaa',marginBottom:'10px'}}>
+            <ContentBox style={{width:'386px', height:'140px', margin:'0 auto', border:'1px solid #ccc',marginBottom:'10px'}}>
                         <Header style={{paddingTop:'4px', paddingBottom:'11px', height:'37px'}}>
                           <HeadText style={{fontSize:'14px'}}>
                             Camp_us

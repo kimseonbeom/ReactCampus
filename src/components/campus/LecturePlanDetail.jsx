@@ -13,6 +13,8 @@ const MiniTable = styled.table`
     width: 270px;
     margin: 0 auto;
     height: 84px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-collapse: collapse;
     td {
         border: 1px solid #aaa;  
@@ -63,7 +65,7 @@ function LecturePlanDetail() {
                </FlexDiv>
                <Wrap>
                 <div style={{height:'10px'}}></div>
-                    <ContentBox style={{height:'233px', marginBottom:'10px'}}>
+                    <ContentBox style={{height:'190px', marginBottom:'10px'}}>
                                 <Header style={{paddingTop:'18px', alignItems:'center',paddingLeft:'26px'}}>
                                 <ContentText style={{fontSize:'14px'}}>
                                     교수정보
@@ -109,7 +111,7 @@ function LecturePlanDetail() {
                                 </tr>
                             </Table>
                             </ContentBox>
-                    <ContentBox style={{height:'501px', marginBottom:'10px'}}>
+                    <ContentBox style={{height:'595px', marginBottom:'10px'}}>
                                 <Header style={{paddingTop:'18px', alignItems:'center',paddingLeft:'26px'}}>
                                 <ContentText style={{fontSize:'14px'}}>
                                     수업정보

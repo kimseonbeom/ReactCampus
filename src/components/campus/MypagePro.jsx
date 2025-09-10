@@ -38,7 +38,7 @@ function MypagePro() {
             </div>
         </PictureContainer>
         <Wrap>
-        <ContentBox style={{height:'233px', marginBottom:'10px'}}>
+        <ContentBox style={{height:'270px', marginBottom:'10px'}}>
             <Header style={{paddingTop:'18px', alignItems:'center',paddingLeft:'26px'}}>
             <ContentText>
                 개인정보

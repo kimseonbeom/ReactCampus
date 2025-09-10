@@ -15,6 +15,8 @@ import pageArrow4 from './img/pageArrow4.png'
 import { ContentText, OverviewText } from './ProjectObjectProjectList';
 import { Flex } from './HomeWrapperPro';
 import { RegistButton } from './MailWrite';
+import useModalStore from './modalStore';
+import Toast from './Toast';
 
 const LengthLine = styled.div`
     background-color: #aaa;
@@ -63,20 +65,29 @@ function ProjectTeamList() {
         const startInputRef = useRef(null);
         const endInputRef = useRef(null);
         const [checked, setChecked] = useState(false);
-    
+        const showConfirm = useModalStore((state) => state.showConfirm);
         const toggleOpen = () => setOpen(!open);
-    
+        const [toastMsg, setToastMsg] = useState("");
+
+
         // 옵션 선택
         const handleSelect = (value) => {
             setSelected(value);
             setOpen(false);
       };
+    const handleRegister = () => {
+  showConfirm("정말 등록하시겠습니까?", () => {
+    console.log("팀 등록 확인됨");
+    setToastMsg("팀이 등록되었습니다 ! ");
+  });
+};
   return (
+    <>
     <div style={{width:"100%", minHeight:"731px", backgroundColor:"#f7f7f7"}}>
                 <ListHeader style={{height:'146px'}}>
                     <FlexDiv style={{marginLeft:'10px'}}>
                         <CatTitle>팀목록</CatTitle>
-                        <RegistButton style={{marginLeft:'auto'}}>팀등록</RegistButton>
+                        <RegistButton style={{marginLeft:'auto'}} onClick={handleRegister}>팀등록</RegistButton>
                     </FlexDiv>
                     <FlexDiv style={{marginTop:'8px'}} >
                         <div style={{ display: "flex", alignItems: "center", width: "152px", height: "36px" }} >
@@ -116,7 +127,7 @@ function ProjectTeamList() {
                         </SearchBar>
                     </FlexDiv>
                 </ListHeader>
-                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #aaa', marginBottom:'10px',marginTop:'13px'}}>
+                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #ccc', marginBottom:'10px',marginTop:'13px'}}>
                     <Header style={{paddingTop:'20px', paddingBottom:'11px', height:'37px', alignItems:'center'}}>
                         <HeadText style={{fontSize:'14px'}}>
                             1학기
@@ -131,7 +142,7 @@ function ProjectTeamList() {
                     <Hr style={{margin:'0 auto', width:'366px'}}></Hr>
                     <Contents style={{paddingTop:'10px'}}>
                         <Flex style={{justifyContent: 'flex-start'}}>
-                            <div style={{marginTop:'7px',marginRight:'68px'}}>
+                            <div style={{marginTop:'7px',marginRight:'56px'}}>
                             <ContentText style={{marginBottom:'15px'}}>
                             로드맵
                             </ContentText>
@@ -172,7 +183,7 @@ function ProjectTeamList() {
                     </GreenBtn>
                     </div>
                 </ContentBox>
-                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #aaa', marginBottom:'10px'}}>
+                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #ccc', marginBottom:'10px'}}>
                     <Header style={{paddingTop:'20px', paddingBottom:'11px', height:'37px', alignItems:'center'}}>
                         <HeadText style={{fontSize:'14px'}}>
                             1학기
@@ -187,7 +198,7 @@ function ProjectTeamList() {
                     <Hr style={{margin:'0 auto', width:'366px'}}></Hr>
                     <Contents style={{paddingTop:'10px'}}>
                         <Flex style={{justifyContent: 'flex-start'}}>
-                            <div style={{marginTop:'7px',marginRight:'68px'}}>
+                            <div style={{marginTop:'7px',marginRight:'56px'}}>
                             <ContentText style={{marginBottom:'15px'}}>
                             로드맵
                             </ContentText>
@@ -228,7 +239,7 @@ function ProjectTeamList() {
                     </ModifyingBtn>
                     </div>
                 </ContentBox>
-                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #aaa', marginBottom:'10px'}}>
+                <ContentBox style={{width:'386px', height:'160px', margin:'0 auto', border:'1px solid #ccc', marginBottom:'10px'}}>
                     <Header style={{paddingTop:'20px', paddingBottom:'11px', height:'37px', alignItems:'center'}}>
                         <HeadText style={{fontSize:'14px'}}>
                             1학기
@@ -243,7 +254,7 @@ function ProjectTeamList() {
                     <Hr style={{margin:'0 auto', width:'366px'}}></Hr>
                     <Contents style={{paddingTop:'10px'}}>
                         <Flex style={{justifyContent: 'flex-start'}}>
-                            <div style={{marginTop:'7px',marginRight:'68px'}}>
+                            <div style={{marginTop:'7px',marginRight:'56px'}}>
                             <ContentText style={{marginBottom:'15px'}}>
                             로드맵
                             </ContentText>
@@ -312,6 +323,8 @@ function ProjectTeamList() {
                                 </PageNation>
                             </nav>
                 </div>
+                {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg("")} />}
+                </>
   )
 }
 

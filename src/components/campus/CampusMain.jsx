@@ -25,6 +25,7 @@ import LectureOnlineRegist from './LectureOnlineRegist'
 import LectureOnlineModify from './LectureOnlineModify'
 import ChangePasswordModal from './ChangePasswordModal'
 import AttandanceModal from './AttandanceModal'
+import ProjectObjectFeedback from './ProjectObjectFeedback'
 const Container = styled.div`
     width: 100vw;
 `
@@ -69,8 +70,9 @@ function CampusMain() {
           <MailNavBar></MailNavBar>
           </MailMenu>
           <MailDashBoard></MailDashBoard>  */}
-          {/* <TopNav></TopNav> */}
-          {/* <HomeWrapper></HomeWrapper> */}
+          <TopNav></TopNav>
+          <SideMenu></SideMenu>
+          <HomeWrapper></HomeWrapper>
           {/* <HomeWrapperPro></HomeWrapperPro> */}
           {/* <ProjectObjectProjectList></ProjectObjectProjectList> */}
           {/* <LecturePlanNoneData></LecturePlanNoneData> */}
@@ -82,11 +84,12 @@ function CampusMain() {
           {/* <LecturePlanDetail></LecturePlanDetail> */}
           {/* <LecturePlanDetailPro></LecturePlanDetailPro> */}
           {/* <LectureOnlineRegist></LectureOnlineRegist> */}
-          <LectureOnlineModify></LectureOnlineModify>
+          <ProjectObjectFeedback />
           <ConfirmModal />
           <AlertModal />
           <ChangePasswordModal />
           <AttandanceModal />
+          <Mypage />
         </Container>
 
     </BrowserRouter>

@@ -36,9 +36,11 @@ export const GrayHr = styled.hr`
     background-color: #ccc;
 `
 function HomeWrapperPro() {
+     
   return (
     <Container>
             <ContentBox style={{marginTop:'10px'}}>
+                
                 <Header>
                     <HeadText>예정 강의</HeadText>
                 </Header>

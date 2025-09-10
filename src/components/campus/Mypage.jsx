@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Container } from './TopNav'
 import Cancle from './img/Cancle.png'
 import { CatTitle, FlexDiv } from '../../commons/ListComponents'
@@ -9,7 +9,10 @@ import pictureMdfBtn from './img/PictureModifyBtn.png'
 import user1 from './img/user1.jpg'
 import { GreenBox } from './ProjectObjectProjectList'
 import { Hr } from './SideMenu'
-import { usePasswordModalStore } from './modalStore'
+import { useMypageModalStore, usePasswordModalStore } from './modalStore'
+import { Overlay } from './ProjectObjectFeedback'
+import { ExitButton } from './AttandanceModal'
+import Toast from './Toast'
 
 export const PictureContainer = styled.div`
     width: 100%;
@@ -88,30 +91,53 @@ const MyTitleText = styled.h3`
 `
 function Mypage() {
     const { showModal } = usePasswordModalStore();
+    const { visible, hideModal } = useMypageModalStore();
+    const [toastMsg, setToastMsg] = useState("");
+    const [imgSrc, setImgSrc] = useState(user1);
+    const fileInputRef = useRef(null);
+    const handleBtnClick = () => {
+    fileInputRef.current.click();
+  };
 
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImgSrc(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
     const openModal = () => {
     showModal("비밀번호를 변경", (form) => {
       console.log("확인 클릭됨:", form);
     });
   };
+  if (!visible) return null;
   return (
     <>
+    <Overlay>
    <Container style={{backgroundColor:'#fff',display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-           <img src={Cancle} style={{width:'19px', height:'19px'}}></img>           
+           <ExitButton style={{width:'19px', height:'19px', margin:'0'}} onClick={hideModal}>
+                <img src={Cancle} style={{ width: '19px', height: '19px' }} />
+            </ExitButton>         
     </Container>
     
            <FlexDiv style={{marginLeft:'27px',justifyContent:'space-between',marginRight:'21px'}}>
                 <CatTitle>마이페이지</CatTitle>
                 
-                <RegistButton style={{width:'48px', height:'26px'}}>저장</RegistButton>
+                <RegistButton style={{width:'48px', height:'26px'}} onClick={() => setToastMsg("저장되었습니다!")}>저장</RegistButton>
             </FlexDiv>
         <PictureContainer>
             <div>
             <Picture>
-                <img src={user1} style={{width:'100%', height:'100%', objectFit:'cover', borderRadius:'50%',display:'block'}}/>
-                <PictureModifyBtn>
+                <img src={imgSrc} style={{width:'100%', height:'100%', objectFit:'cover', borderRadius:'50%',display:'block'}}/>
+                <PictureModifyBtn onClick={handleBtnClick}>
                     <img src={pictureMdfBtn} style={{width:'100%', height:'100%', objectFit:'cover'}}/>
                 </PictureModifyBtn>
+                <input type="file" accept="image/*" style={{ display: 'none' }} ref={fileInputRef} onChange={handleFileChange} />
             </Picture>
             <HeadText style={{marginTop:'12px', marginBottom:'2px'}}>20191396</HeadText>
             <HeadText style={{marginTop:0}}>권오규</HeadText>
@@ -322,6 +348,9 @@ function Mypage() {
         </Table>
         </ContentBox>
         </Wrap>
+        </Overlay>
+        {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg("")} />}
+
     </>
   )
 }

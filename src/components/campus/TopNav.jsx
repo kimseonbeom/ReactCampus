@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import menuBar from './img/menuBar.png';
 import logoRow from './img/logoRow.png';
 import mail from './img/mail.png';
+import { Nonebutton } from './SideMenu';
+import { useSideMenuStore } from './modalStore';
 
 export const Container = styled.div`
   width: 100%;
@@ -21,9 +23,13 @@ export const Menu = styled.div`
 `
 
 function TopNav() {
+  const toggleMenu = useSideMenuStore((state) => state.toggleMenu);
+
   return (
     <Container>
+      <Nonebutton style={{width:"27px", height: "18px"}}  onClick={toggleMenu}>
       <img src={menuBar} style={{width:"27px", height: "18px", marginTop:"5px"}}/>
+      </Nonebutton>
       <img src={logoRow} style={{width:"116px", height: "27px"}}/>
       <img src={mail} style={{width:"27px", height: "18px", marginTop:"5px"}}/>
     </Container>

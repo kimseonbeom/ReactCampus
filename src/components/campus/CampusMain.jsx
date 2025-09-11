@@ -26,6 +26,10 @@ import LectureOnlineModify from './LectureOnlineModify'
 import ChangePasswordModal from './ChangePasswordModal'
 import AttandanceModal from './AttandanceModal'
 import ProjectObjectFeedback from './ProjectObjectFeedback'
+import Login from './Login'
+import { useAuthStore } from './modalStore'
+import axios from 'axios'
+import { checkSession } from './api'
 const Container = styled.div`
     width: 100vw;
 `
@@ -54,42 +58,41 @@ const MailMenu = styled.div`
   width: 100%;
 `
 function CampusMain() {
-  //     const [loading, setLoading] = useState(true);
-  //     useEffect(() => {
-  //   // 페이지 로드 후 preloader 제거
-  //   const timer = setTimeout(() => setLoading(false), 400); // 1초 후
-  //   return () => clearTimeout(timer);
-  // }, []);
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn)
+  const login = useAuthStore(state => state.login);
+  const logout = useAuthStore(state => state.logout);
+  const [checkingSession, setCheckingSession] = useState(true);
+useEffect(() => {
+    // 세션 스토리지에 로그인 정보가 있으면 로그인 처리
+    const userData = sessionStorage.getItem('user');
+    if (userData) {
+      login(JSON.parse(userData));
+    } else {
+      logout();
+    }
+    setCheckingSession(false);
+  }, []);
+if (checkingSession) return <Loading />;
   return (
-    <BrowserRouter>
    
-        <Loading></Loading>
+    <BrowserRouter>
         <Container>
-          {/* <MailMenu>
-          <MailWrite></MailWrite>
-          <MailNavBar></MailNavBar>
-          </MailMenu>
-          <MailDashBoard></MailDashBoard>  */}
+          {!isLoggedIn ? ( <Login />
+          ) : (
+ <>
           <TopNav></TopNav>
+
           <SideMenu></SideMenu>
           <HomeWrapper></HomeWrapper>
-          {/* <HomeWrapperPro></HomeWrapperPro> */}
-          {/* <ProjectObjectProjectList></ProjectObjectProjectList> */}
-          {/* <LecturePlanNoneData></LecturePlanNoneData> */}
-          {/* <LecturePlanNoneDataPro></LecturePlanNoneDataPro> */}
-          {/* <Error></Error> */}
-          {/* <ProjectTeamList></ProjectTeamList> */}
-          {/* <Mypage></Mypage> */}
-          {/* <MypagePro></MypagePro> */}
-          {/* <LecturePlanDetail></LecturePlanDetail> */}
-          {/* <LecturePlanDetailPro></LecturePlanDetailPro> */}
-          {/* <LectureOnlineRegist></LectureOnlineRegist> */}
+
           <ProjectObjectFeedback />
           <ConfirmModal />
           <AlertModal />
           <ChangePasswordModal />
           <AttandanceModal />
           <Mypage />
+          </>
+          )}
         </Container>
 
     </BrowserRouter>

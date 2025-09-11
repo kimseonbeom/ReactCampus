@@ -10,7 +10,9 @@ import projecthv from './img/Pro_hv.png'
 import post from './img/Post.png'
 import posthv from './img/Post_hv.png'
 import mypage from './img/right.png'
-import { useMypageModalStore, useSideMenuStore } from './modalStore'
+import { useAuthStore, useMypageModalStore, useSideMenuStore } from './modalStore'
+import { logoutUser } from './api'
+import Toast from './Toast'
 
 
 const Overlay = styled.div`
@@ -131,7 +133,21 @@ function SideMenu() {
   const [postHover, setPostHover] = useState(false)
   const { showModal } = useMypageModalStore();
   const { isOpen, closeMenu } = useSideMenuStore();
+  const logout = useAuthStore(state => state.logout);
+  const [toastMsg, setToastMsg] = useState("");
   
+
+  const handleLogout = async () => {
+  try {
+    await logoutUser(); // 서버 세션 삭제
+    logout(); // Zustand 상태 초기화
+    sessionStorage.removeItem('user');
+    setToastMsg('로그아웃 완료!');
+  } catch (err) {
+    console.error(err);
+    setToastMsg('로그아웃 실패');
+  }
+};
   return (
     <>
     <Overlay isOpen={isOpen} onClick={closeMenu} />
@@ -150,7 +166,7 @@ function SideMenu() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20220001
           </Text>
         </Profile>
-        <Button style={{ marginTop: '47px', fontSize: "13px" }}>로그아웃</Button>
+        <Button style={{ marginTop: '47px', fontSize: "13px" }} onClick={handleLogout}>로그아웃</Button>
       </div>
 
       <Hr style={{ width: '290px', marginTop:'22px' }} />
@@ -229,6 +245,7 @@ function SideMenu() {
         </li>
       </ul>
     </Container>
+    {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg("")} />}
     </>
   )
 }

@@ -1,4 +1,5 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 const useModalStore = create((set) => ({
   // Confirm
@@ -58,4 +59,19 @@ export const useSideMenuStore = create((set) => ({
   closeMenu: () => set({ isOpen: false }),
   toggleMenu: () => set((state) => ({ isOpen: !state.isOpen })),
 }));
+
+export const useAuthStore = create(
+  persist(
+    set => ({
+      isLoggedIn: false,
+      user: null, // 로그인한 사용자 정보
+      login: (userData) => set({ isLoggedIn: true, user: userData }),
+      logout: () => set({ isLoggedIn: false, user: null })
+    }),
+    {
+      name: "user-storage",
+      storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+)
 export default useModalStore;

@@ -14,6 +14,8 @@ import { Overlay } from './ProjectObjectFeedback'
 import { ExitButton } from './AttandanceModal'
 import Toast from './Toast'
 
+
+
 export const PictureContainer = styled.div`
     width: 100%;
     height: 234px;
